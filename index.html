@@ -1,236 +1,178 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Cute Finds | Discover Your Next Favourite</title>
-<meta name="description" content="Discover beautiful finds for your home, lifestyle, fashion and more.">
 <style>
+:root{--bg:#faf8f4;--ink:#302b26;--muted:#81776c;--line:#e9e2d8;--accent:#a58b70}
 *{box-sizing:border-box}
-body{margin:0;background:#fcfaf8;color:#39332f;font-family:Arial,sans-serif}
-header{background:#fff;padding:22px 6%;text-align:center;border-bottom:1px solid #eee}
-.logo{font-family:Georgia,serif;font-size:34px;color:#9c7065;margin:0}
-.tagline{color:#888;font-size:13px;margin:7px 0}
-nav{display:flex;justify-content:center;gap:20px;padding:14px;flex-wrap:wrap;background:#fff}
-nav a{color:#62544e;text-decoration:none;font-size:14px}
-.hero{padding:65px 20px;text-align:center;background:#f2e9e4}
-.hero h1{font-family:Georgia,serif;font-size:38px;font-weight:normal;margin:0 0 12px}
-.hero p{color:#74665f}
-.search{max-width:480px;margin:25px auto 0;display:flex}
-.search input{flex:1;min-width:0;padding:14px;border:1px solid #ddd;border-radius:7px 0 0 7px;font-size:15px}
-.search button{border:0;background:#9c7065;color:#fff;padding:0 20px;border-radius:0 7px 7px 0}
-main{max-width:1200px;margin:35px auto;padding:0 20px}
-.filters{display:flex;gap:9px;justify-content:center;flex-wrap:wrap;margin-bottom:28px}
-.filters button{padding:10px 16px;border:1px solid #d9c9c1;border-radius:25px;background:white;color:#66554d;cursor:pointer}
-.filters button.active{background:#9c7065;color:white;border-color:#9c7065}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:22px}
-.card{background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 3px 15px #0000000a}
-.card img{width:100%;height:245px;object-fit:cover;background:#eee}
-.card-content{padding:16px}
-.card h3{font-family:Georgia,serif;font-weight:normal;font-size:19px;margin:0 0 9px}
-.category{font-size:11px;text-transform:uppercase;letter-spacing:1px;color:#a17c70}
-.description{font-size:13px;color:#777;line-height:1.5;min-height:38px}
-.price{font-weight:bold;margin:12px 0;color:#57443c}
-.shop{display:block;text-align:center;background:#9c7065;color:white;padding:12px;text-decoration:none;border-radius:6px;font-size:14px}
-#status{text-align:center;padding:35px;color:#777}
-footer{text-align:center;padding:35px 15px;margin-top:55px;background:#f2e9e4;color:#74665f;font-size:13px}
-@media(max-width:500px){.hero h1{font-size:29px}.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.card img{height:170px}.card-content{padding:11px}.card h3{font-size:16px}}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Arial,sans-serif}
+header{padding:25px 6%;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line)}
+.logo{font-family:Georgia,serif;font-size:30px}
+header a{color:var(--ink);text-decoration:none;font-size:14px}
+.hero{text-align:center;padding:65px 20px 40px}
+.hero h1{font-family:Georgia,serif;font-size:clamp(32px,5vw,52px);font-weight:normal;margin:0 0 15px}
+.hero p{color:var(--muted);line-height:1.7}
+.search{display:block;width:min(440px,90%);margin:25px auto;padding:14px 17px;border:1px solid var(--line);border-radius:30px;background:white;font-size:15px}
+.categories{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;padding:10px 15px 30px}
+.categories button{border:1px solid var(--line);background:white;border-radius:25px;padding:10px 17px;cursor:pointer;color:var(--ink)}
+.categories button.active{background:var(--ink);color:white}
+main{max-width:1250px;margin:auto;padding:15px 5% 60px}
+.section-title{text-align:center;font:normal 29px Georgia,serif;margin:15px 0 30px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:25px}
+.card{background:white;border:1px solid var(--line);border-radius:9px;overflow:hidden}
+.card img{width:100%;aspect-ratio:4/5;object-fit:cover;background:#eee}
+.details{padding:15px}
+.details h3{font:normal 19px Georgia,serif;margin:0 0 8px}
+.details p{font-size:13px;color:var(--muted);line-height:1.5;min-height:35px}
+.price{font-weight:bold;margin:12px 0}
+.shop{display:block;text-align:center;background:var(--ink);color:white;text-decoration:none;padding:12px;border-radius:5px;font-size:14px}
+.message{text-align:center;padding:35px;color:var(--muted)}
+footer{text-align:center;padding:35px 15px;border-top:1px solid var(--line);color:var(--muted);font-size:13px}
+footer a{color:inherit;margin:0 8px}
 </style>
 </head>
-<body>
-
-<header>
-  <h1 class="logo">Cute Finds</h1>
-  <p class="tagline">Little things that make life beautiful ♡</p>
-</header>
-
-<nav>
-  <a href="#">Home</a>
-  <a href="#shop">Shop</a>
-  <a href="#about">About Us</a>
-</nav>
-
-<section class="hero">
-  <h1>Discover Your Next Favourite</h1>
-  <p>Beautiful finds for your everyday life.</p>
-  <div class="search">
-    <input id="search" type="search" placeholder="Search products...">
-    <button id="searchBtn">Search</button>
+<body><header>
+  <div class="logo">Cute Finds</div>
+  <a href="admin.html">Admin</a>
+</header><section class="hero">
+  <h1>Little Finds, Big Happiness</h1>
+  <p>Discover beautiful things for your home, lifestyle and everyday moments.</p>
+  <input class="search" id="search" type="search" placeholder="Search your favourite finds...">
+</section><nav class="categories" id="categories">
+  <button class="active" data-category="All">All</button>
+  <button data-category="Home Decor">Home Decor</button>
+  <button data-category="Fashion">Fashion</button>
+  <button data-category="Beauty">Beauty</button>
+  <button data-category="Kitchen">Kitchen</button>
+  <button data-category="Electronics">Electronics</button>
+  <button data-category="Lifestyle">Lifestyle</button>
+  <button data-category="Accessories">Accessories</button>
+</nav><main>
+  <h2 class="section-title">Our Favourite Finds</h2>
+  <div id="productGrid" class="grid">
+    <div class="message">Loading products...</div>
   </div>
-</section>
+</main><footer>
+  <p>Made with love · Cute Finds</p>
+  <a href="https://pin.it/4zPwNDqNF" target="_blank" rel="noopener">Pinterest</a>
+  <p>As an Amazon Associate, we earn from qualifying purchases.</p>
+</footer><script>
+const API_URL="https://script.google.com/macros/s/AKfycbyLJovLqOpOTpfJ1DYBAM-OCTePOxct0_nl30a5IodWzzzjgSzzD86dILIYawkdrjqt/exec";
 
-<main id="shop">
-  <div class="filters" id="filters">
-    <button class="active" data-category="All">All</button>
-    <button data-category="Home Decor">Home Decor</button>
-    <button data-category="Fashion">Fashion</button>
-    <button data-category="Kitchen">Kitchen</button>
-    <button data-category="Beauty">Beauty</button>
-    <button data-category="Electronics">Electronics</button>
-    <button data-category="Lifestyle">Lifestyle</button>
-  </div>
+let products=[];
+let selectedCategory="All";
 
-  <div id="status">Loading your finds...</div>
-  <div class="grid" id="products"></div>
-</main>
+function loadProducts(){
+  const callback="cuteFindsStore_"+Date.now();
+  const script=document.createElement("script");
+  const url=new URL(API_URL);
 
-<footer id="about">
-  <h2 style="font-family:Georgia,serif;font-weight:normal">Cute Finds ♡</h2>
-  <p>Thoughtfully selected finds for your everyday life.</p>
-  <p>Some links may be affiliate links. We may earn a commission from qualifying purchases.</p>
-  <p>© <span id="year"></span> Cute Finds</p>
-</footer>
+  url.searchParams.set("action","products");
+  url.searchParams.set("callback",callback);
+  url.searchParams.set("_",Date.now());
 
-<script>
-const BACKEND_URL =
-"https://script.google.com/macros/s/AKfycbyLJovLqOpOTpfJ1DYBAM-OCTePOxct0_nl30a5IodWzzzjgSzzD86dILIYawkdrjqt/exec";
+  const timeout=setTimeout(()=>{
+    delete window[callback];
+    script.remove();
+    document.getElementById("productGrid").innerHTML=
+      '<div class="message">Could not load products. Please refresh the page.</div>';
+  },15000);
 
-let allProducts = [];
-let selectedCategory = "All";
+  window[callback]=(data)=>{
+    clearTimeout(timeout);
+    delete window[callback];
+    script.remove();
 
-function jsonp(url) {
-  return new Promise((resolve,reject)=>{
-    const callback = "cuteStore_" + Math.random().toString(36).slice(2);
-    const script = document.createElement("script");
-
-    const timer = setTimeout(()=>{
-      delete window[callback];
-      script.remove();
-      reject(new Error("Connection timed out."));
-    },15000);
-
-    function cleanup(){
-      clearTimeout(timer);
-      delete window[callback];
-      script.remove();
+    if(!data || !data.success){
+      document.getElementById("productGrid").innerHTML=
+        '<div class="message">Unable to load products right now.</div>';
+      return;
     }
 
-    window[callback] = data=>{
-      cleanup();
-      resolve(data);
-    };
+    products=Array.isArray(data.products)?data.products:[];
+    renderProducts();
+  };
 
-    script.onerror = ()=>{
-      cleanup();
-      reject(new Error("Unable to connect to the product server."));
-    };
+  script.onerror=()=>{
+    clearTimeout(timeout);
+    delete window[callback];
+    script.remove();
+    document.getElementById("productGrid").innerHTML=
+      '<div class="message">Connection error. Please refresh the page.</div>';
+  };
 
-    script.src = url +
-      (url.includes("?") ? "&" : "?") +
-      "callback=" + callback + "&_=" + Date.now();
-
-    document.body.appendChild(script);
-  });
-}
-
-function safeUrl(value) {
-  try {
-    const url = new URL(value);
-    return url.protocol === "https:" ? url.href : "";
-  } catch(e) {
-    return "";
-  }
+  script.src=url.toString();
+  document.head.appendChild(script);
 }
 
 function renderProducts(){
-  const grid = document.getElementById("products");
-  const status = document.getElementById("status");
-  const query = document.getElementById("search").value.toLowerCase().trim();
+  const grid=document.getElementById("productGrid");
+  const search=document.getElementById("search").value.toLowerCase().trim();
 
-  grid.innerHTML = "";
-
-  const filtered = allProducts.filter(p=>{
-    const categoryMatch =
-      selectedCategory === "All" || p.category === selectedCategory;
-
-    const searchMatch =
-      [p.name,p.category,p.description].join(" ").toLowerCase().includes(query);
-
-    return categoryMatch && searchMatch;
+  const filtered=products.filter(p=>{
+    const matchesCategory=selectedCategory==="All" || p.category===selectedCategory;
+    const matchesSearch=(p.name+" "+p.description+" "+p.category).toLowerCase().includes(search);
+    return matchesCategory && matchesSearch;
   });
 
   if(!filtered.length){
-    status.textContent = "No products found. Please try another search.";
+    grid.innerHTML='<div class="message">No products found. Check back soon!</div>';
     return;
   }
 
-  status.textContent = "";
+  grid.innerHTML="";
 
   filtered.forEach(p=>{
-    const card = document.createElement("article");
-    card.className = "card";
+    const card=document.createElement("article");
+    card.className="card";
 
-    const img = document.createElement("img");
-    img.alt = p.name || "Product";
-    img.loading = "lazy";
-    img.src = safeUrl(p.imageUrl) || "https://placehold.co/500x500/f2e9e4/80675d?text=Cute+Finds";
+    const img=document.createElement("img");
+    img.src=p.imageUrl || "";
+    img.alt=p.name || "Product";
+    img.loading="lazy";
+    img.onerror=()=>{img.style.display="none"};
 
-    const content = document.createElement("div");
-    content.className = "card-content";
+    const details=document.createElement("div");
+    details.className="details";
 
-    const category = document.createElement("div");
-    category.className = "category";
-    category.textContent = p.category || "Find";
+    const name=document.createElement("h3");
+    name.textContent=p.name || "Untitled product";
 
-    const title = document.createElement("h3");
-    title.textContent = p.name || "Untitled product";
+    const description=document.createElement("p");
+    description.textContent=p.description || p.category || "";
 
-    const description = document.createElement("p");
-    description.className = "description";
-    description.textContent = p.description || "";
+    const price=document.createElement("div");
+    price.className="price";
+    price.textContent=p.price || "";
 
-    const price = document.createElement("div");
-    price.className = "price";
-    price.textContent = p.price || "";
+    const link=document.createElement("a");
+    link.className="shop";
+    link.textContent="Shop Now";
+    link.href=p.affiliateUrl || "#";
+    link.target="_blank";
+    link.rel="noopener sponsored";
 
-    const link = document.createElement("a");
-    link.className = "shop";
-    link.textContent = "Shop Now";
-    link.href = safeUrl(p.affiliateUrl) || "#";
-    link.target = "_blank";
-    link.rel = "noopener noreferrer sponsored";
-
-    if(link.href === "#") link.addEventListener("click",e=>e.preventDefault());
-
-    content.append(category,title,description,price,link);
-    card.append(img,content);
+    details.append(name,description,price,link);
+    card.append(img,details);
     grid.appendChild(card);
   });
 }
 
-async function loadProducts(){
-  document.getElementById("status").textContent = "Loading your finds...";
+document.getElementById("search").addEventListener("input",renderProducts);
 
-  try{
-    const data = await jsonp(BACKEND_URL + "?action=products");
+document.getElementById("categories").addEventListener("click",e=>{
+  if(e.target.tagName!=="BUTTON")return;
 
-    if(!data.success) throw new Error(data.error || "Could not load products.");
+  selectedCategory=e.target.dataset.category;
 
-    allProducts = data.products || [];
-    renderProducts();
+  document.querySelectorAll(".categories button").forEach(btn=>{
+    btn.classList.toggle("active",btn===e.target);
+  });
 
-  }catch(error){
-    document.getElementById("status").textContent =
-      "Unable to load products. Please try again later.";
-    console.error(error);
-  }
-}
-
-document.getElementById("filters").addEventListener("click",e=>{
-  if(e.target.tagName !== "BUTTON") return;
-
-  document.querySelectorAll(".filters button").forEach(b=>b.classList.remove("active"));
-  e.target.classList.add("active");
-
-  selectedCategory = e.target.dataset.category;
   renderProducts();
 });
 
-document.getElementById("search").addEventListener("input",renderProducts);
-document.getElementById("searchBtn").addEventListener("click",renderProducts);
-document.getElementById("year").textContent = new Date().getFullYear();
-
 loadProducts();
-</script>
-</body>
+</script></body>
 </html>
